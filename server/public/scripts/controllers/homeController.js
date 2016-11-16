@@ -8,8 +8,7 @@ myApp.controller("HomeController", ["$scope", "$http", "$document", "$timeout", 
     var signIn = userFactory.signIn();
     var signOut = userFactory.signOut();
     $scope.auth = AuthFactory
-    $scope.user.exampledb = 'loading'; //kind of hacky way to make a loading screen.. there are much better ways using the same concept :P
-    //clickfunctions
+    
     $scope.login = function() {
         signIn();
     }
@@ -73,7 +72,7 @@ myApp.controller("HomeController", ["$scope", "$http", "$document", "$timeout", 
         var tempArray = [];
         _.pairs(data) //uses underscorejs to format object and update $scope.user.taskList
             .forEach(function(dataArray) {
-                dataArray[1].key = dataArray[0];
+                dataArray[1].key = dataArray[0]; //finds random id key firebase assigns when you push() data.
                 tempArray.push(
                     dataArray[1]
                 )
